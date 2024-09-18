@@ -15,7 +15,7 @@ all: clean simulate
 
 clean:
 	@echo "$(YELLOW)[MAKE] Cleaning previous simulation...$(RESET)"
-	rm -r work $(RESULT_DIR)
+	-rm -r work $(RESULT_DIR)
 
 simulate:
 	@echo ""
