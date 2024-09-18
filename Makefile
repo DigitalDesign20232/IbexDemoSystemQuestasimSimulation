@@ -41,11 +41,15 @@ simulate:
 	@echo "$(YELLOW)[MAKE] See result with commands: 'ls result'$(RESET)"
 
 help:
-	@echo "$(GREEN)Usage: make all [PARAMETER=VALUE][PARAMETER=VALUE]...$(RESET)"
+	@echo "Opening help page..."
+	@echo "$(GREEN)Usage:$(RESET) make all [PARAMETER=VALUE][PARAMETER=VALUE]..."
+	@echo ""
 	@echo "$(YELLOW)List of available Parameters:$(RESET)"
 	@echo "\tTOP_MODULE (default: $(TOP_MODULE))"
 	@echo "\tVSIM_MEM_OBJ_PATH (default: $(VSIM_MEM_OBJ_PATH))"
 	@echo "\tOUTPUT_MEM_FILE (default: $(OUTPUT_MEM_FILE))"
 	@echo "\tSIMULATION_TIME (default: $(SIMULATION_TIME))"
+	@echo ""
+	@echo "$(YELLOW)Alternatively, you can set the default value for those parameters in Makefile.include$(RESET)"
 
 .PHONY: all clean simulate help
