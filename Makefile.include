@@ -1,0 +1,7 @@
+# User-customizable settings
+RTL_DIR ?= rtl
+
+TOP_MODULE ?= tb_ibex_demo_system
+VSIM_MEM_OBJ_PATH ?= /tb_ibex_demo_system/u_ibex_demo_system_i/imem_dmem/u_ram/u_impl_generic/mem
+OUTPUT_MEM_FILE ?= result.mem
+SIMULATION_TIME ?= 10000ns
