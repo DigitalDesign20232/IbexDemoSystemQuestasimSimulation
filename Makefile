@@ -3,6 +3,7 @@
 # Load user-configurable settings
 include Makefile.include
 
+RTL_DIR ?= rtl
 RESULT_DIR = result
 
 RED = \033[31m
@@ -33,7 +34,7 @@ simulate:
 	mem save -o $(OUTPUT_MEM_FILE) -f mti -data hex -addr decimal -wordsperline 1 $(VSIM_MEM_OBJ_PATH); \
 	quit"
 
-	mv *.mem *.wlf transcript result/
+	mv $(OUTPUT_MEM_FILE) *.wlf transcript $(RESULT_DIR)/
 
 	@echo ""
 	@echo ""
