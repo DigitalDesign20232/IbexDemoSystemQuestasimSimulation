@@ -3,7 +3,6 @@
 # Load user-configurable settings
 include Makefile.include
 
-RTL_DIR ?= rtl
 RESULT_DIR = result
 
 RED = \033[31m
@@ -27,7 +26,7 @@ simulate:
 	@echo ""
 	@echo "$(YELLOW)[MAKE] Running simulation...$(RESET)"
 	vsim -c -do " \
-	vlog -work work -vopt -sv -stats=none -suppress all $(RTL_DIR)/*pkg.sv $(RTL_DIR)/*.sv $(RTL_DIR)/*.v; \
+	vlog -work work -vopt -sv -stats=none -suppress all $(RTL_FILE); \
 	vsim -c work.$(TOP_MODULE) -voptargs=+acc; \
 	log -r /*; \
 	run $(SIMULATION_TIME); \
@@ -46,11 +45,13 @@ help:
 	@echo "$(GREEN)Usage:$(RESET) make all [PARAMETER=VALUE][PARAMETER=VALUE]..."
 	@echo ""
 	@echo "$(YELLOW)List of available Parameters:$(RESET)"
+	@echo "\tRTL_FILE (default: $(RTL_FILE))"
 	@echo "\tTOP_MODULE (default: $(TOP_MODULE))"
 	@echo "\tVSIM_MEM_OBJ_PATH (default: $(VSIM_MEM_OBJ_PATH))"
 	@echo "\tOUTPUT_MEM_FILE (default: $(OUTPUT_MEM_FILE))"
 	@echo "\tSIMULATION_TIME (default: $(SIMULATION_TIME))"
 	@echo ""
+	@echo "$(RED)Note that the RAM's content must be put in ram.vmem$(RESET)"
 	@echo "$(YELLOW)Alternatively, you can set the default value for those parameters in Makefile.include$(RESET)"
 
 .PHONY: all clean simulate help
