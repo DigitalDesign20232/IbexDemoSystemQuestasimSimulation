@@ -27,7 +27,7 @@ simulate:
 	@echo ""
 	@echo "$(YELLOW)[MAKE] Running simulation...$(RESET)"
 	vsim -c -do " \
-	vlog -work work -vopt -sv -stats=none -suppress all $(RTL_DIR)/*pkg.sv $(RTL_DIR)/*.sv; \
+	vlog -work work -vopt -sv -stats=none -suppress all $(RTL_DIR)/*pkg.sv $(RTL_DIR)/*.sv $(RTL_DIR)/*.v; \
 	vsim -c work.$(TOP_MODULE) -voptargs=+acc; \
 	log -r /*; \
 	run $(SIMULATION_TIME); \
