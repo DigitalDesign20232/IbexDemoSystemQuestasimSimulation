@@ -11,7 +11,7 @@ YELLOW = \033[33m
 RESET = \033[0m
 
 # Target
-all: clean simulate
+all: clean update_ram simulate
 
 clean:
 	@echo "$(YELLOW)[MAKE] Cleaning previous simulation...$(RESET)"
@@ -38,20 +38,28 @@ simulate:
 	@echo ""
 	@echo ""
 	@echo "$(GREEN)[MAKE] Simulation completed!$(RESET)"
-	@echo "$(YELLOW)[MAKE] See result with commands: 'ls result'$(RESET)"
+	@echo "$(GREEN)[MAKE] Simulation result saved to folder result/$(RESET)"
+	@echo "$(YELLOW)[MAKE] See result with command: 'ls result'$(RESET)"
+	
+update_ram:
+	@echo ""
+	@echo "$(YELLOW)[MAKE] Updating RAM's content...$(RESET)"
+	-mv $(VMEM_PATH) ram.vmem
 
 help:
 	@echo "Opening help page..."
-	@echo "$(GREEN)Usage:$(RESET) make all [PARAMETER=VALUE][PARAMETER=VALUE]..."
+	@echo "Usage:$(GREEN) make all [PARAMETER=VALUE] [PARAMETER=VALUE]...$(RESET)"
 	@echo ""
 	@echo "$(YELLOW)List of available Parameters:$(RESET)"
 	@echo "\tRTL_FILE (default: $(RTL_FILE))"
 	@echo "\tTOP_MODULE (default: $(TOP_MODULE))"
 	@echo "\tVSIM_MEM_OBJ_PATH (default: $(VSIM_MEM_OBJ_PATH))"
 	@echo "\tOUTPUT_MEM_FILE (default: $(OUTPUT_MEM_FILE))"
+	@echo "\tVMEM_PATH (default: $(VMEM_PATH))"
 	@echo "\tSIMULATION_TIME (default: $(SIMULATION_TIME))"
 	@echo ""
 	@echo "$(RED)Note that the RAM's content must be put in ram.vmem$(RESET)"
+	@echo "$(RED)To update ram content, run command: $(GREEN)'make update_ram VMEM_PATH=<path/to/vmem/file>'$(RESET)"
 	@echo "$(YELLOW)Alternatively, you can set the default value for those parameters in Makefile.include$(RESET)"
 
 .PHONY: all clean simulate help

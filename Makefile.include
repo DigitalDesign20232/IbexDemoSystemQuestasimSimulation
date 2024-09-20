@@ -5,4 +5,5 @@ RTL_FILE ?= $(RTL_DIR)/*pkg.sv $(RTL_DIR)/*.sv
 TOP_MODULE ?= tb_ibex_demo_system
 VSIM_MEM_OBJ_PATH ?= /tb_ibex_demo_system/u_ibex_demo_system_i/imem_dmem/u_ram/u_impl_generic/mem
 OUTPUT_MEM_FILE ?= result.mem
+VMEM_PATH ?= ram.vmem
 SIMULATION_TIME ?= 10000ns
