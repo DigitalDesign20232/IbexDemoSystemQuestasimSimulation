@@ -22,12 +22,16 @@ OUTPUT_NAME := $(OUTPUT_NAME_REF)
 
 ifeq ($(OS),Windows_NT)
 SHELL := powershell.exe
+RM := rm -r -Force
+MKDIR := mkdir -Force
 
 RED = [31m
 GREEN = [32m
 YELLOW = [33m
 RESET = [0m
 else
+RM := rm -rf
+MKDIR := -$(MKDIR)
 
 RED = \033[31m
 GREEN = \033[32m
@@ -62,7 +66,7 @@ endif
 
 clean_sim:
 	@echo "$(YELLOW)[MAKE] Cleaning previous simulation...$(RESET)"
-	-rm -rf $(RESULT_DIR)
+	-$(RM) "$(RESULT_DIR)"
 	@echo ""
 
 update_test:
@@ -80,7 +84,7 @@ else
 build_simulation: update_test
 endif
 	@echo "$(YELLOW)[MAKE] Cleaning directory $(CURDIR)/$(BUILD_DIR)...$(RESET)"
-	-rm -rf $(BUILD_DIR)
+	-$(RM) "$(BUILD_DIR)"
 	@echo ""
 	@echo "$(YELLOW)[MAKE] Building simulation...$(RESET)"
 	vsim -c -do " \
@@ -90,7 +94,7 @@ endif
 
 simulate:
 	@echo "$(YELLOW)[MAKE] Creating directory: $(CURDIR)/$(RESULT_DIR)$(RESET)"
-	-mkdir -p $(RESULT_DIR)
+	-$(MKDIR) "$(RESULT_DIR)"
 
 	@echo ""
 	@echo ""
@@ -107,7 +111,9 @@ simulate:
 
 	@echo ""
 	@echo "$(YELLOW)[MAKE] Moving simulation results to $(CURDIR)/$(RESULT_DIR)$(RESET)"
-	-mv $(OUTPUT_NAME).mem $(OUTPUT_NAME).vcd transcript $(RESULT_DIR)/
+	mv "$(OUTPUT_NAME).mem" "$(RESULT_DIR)/"
+	mv "$(OUTPUT_NAME).vcd" "$(RESULT_DIR)/"
+	mv "transcript" "$(RESULT_DIR)/"
 
 	@echo ""
 	@echo ""
@@ -119,7 +125,7 @@ simulate:
 
 update_ram:
 	@echo "$(YELLOW)[MAKE] Updating RAM's content...$(RESET)"
-	-cp $(VMEM_PATH) $(DEFAULT_VMEM_PATH)
+	-cp "$(VMEM_PATH)" "$(DEFAULT_VMEM_PATH)"
 	@echo ""
 
 help:
@@ -136,5 +142,3 @@ help:
 	@echo "$(RED)Note that the RAM's content must be put in $(DEFAULT_VMEM_PATH)$(RESET)"
 	@echo "$(RED)$(DEFAULT_VMEM_PATH) will be automatically updated by $(VMEM_PATH) when run 'make all_ref' or 'make all_test'$(RESET)"
 	@echo "$(YELLOW)Alternatively, you can set the default value for those parameters in Makefile.include$(RESET)"
-
-# .PHONY: all all_ref all_test clean update_ram simulate update_ref help

@@ -3,3 +3,6 @@ work_test
 result_ref
 result_test
 vmem
+*.mem
+*.vcd
+transcript
