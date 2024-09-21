@@ -2,7 +2,9 @@
 
 ## 1. Quick Start
 
-- To quick start, run `make all_ref`
+- To run Reference Design from ram.vmem: `make all TARGET=R`
+- To run Reference Design from vmem/*.vmem: `make all_multiple TARGET=R`
+- To run Test Design, use `TARGET=T`. Run `make help` to configure Test Design
 
 ## 2. Custom Configuration
 
