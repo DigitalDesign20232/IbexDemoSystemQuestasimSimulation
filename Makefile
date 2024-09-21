@@ -22,8 +22,9 @@ OUTPUT_NAME := $(OUTPUT_NAME_REF)
 
 ifeq ($(OS),Windows_NT)
 SHELL := powershell.exe
-RM := rm -r -Force
+RM := rm -r -Force -ErrorAction SilentlyContinue
 MKDIR := mkdir -Force
+CP := cp -ErrorAction SilentlyContinue
 
 RED = [31m
 GREEN = [32m
@@ -31,7 +32,8 @@ YELLOW = [33m
 RESET = [0m
 else
 RM := rm -rf
-MKDIR := -$(MKDIR)
+MKDIR := mkdir -p
+CP := cp
 
 RED = \033[31m
 GREEN = \033[32m
@@ -63,6 +65,11 @@ else
 all: update_test clean_sim update_ram simulate
 endif
 
+clean_all:
+	@echo "$(YELLOW)[MAKE] Cleaning everything...$(RESET)"
+	-$(RM) "$(BUILD_DIR)"
+	-$(RM) "$(RESULT_DIR)"
+	@echo ""
 
 clean_sim:
 	@echo "$(YELLOW)[MAKE] Cleaning previous simulation...$(RESET)"
@@ -79,9 +86,9 @@ update_test:
 	$(eval OUTPUT_NAME = $(OUTPUT_NAME_TEST))
 
 ifeq ($(TARGET),R)
-build_simulation:
+build:
 else
-build_simulation: update_test
+build: update_test
 endif
 	@echo "$(YELLOW)[MAKE] Cleaning directory $(CURDIR)/$(BUILD_DIR)...$(RESET)"
 	-$(RM) "$(BUILD_DIR)"
@@ -94,7 +101,7 @@ endif
 
 simulate:
 	@echo "$(YELLOW)[MAKE] Creating directory: $(CURDIR)/$(RESULT_DIR)$(RESET)"
-	-$(MKDIR) "$(RESULT_DIR)"
+	$(MKDIR) "$(RESULT_DIR)"
 
 	@echo ""
 	@echo ""
@@ -125,7 +132,7 @@ simulate:
 
 update_ram:
 	@echo "$(YELLOW)[MAKE] Updating RAM's content...$(RESET)"
-	-cp "$(VMEM_PATH)" "$(DEFAULT_VMEM_PATH)"
+	-$(CP) "$(VMEM_PATH)" "$(DEFAULT_VMEM_PATH)"
 	@echo ""
 
 help:

@@ -3,8 +3,8 @@
 ## **1. Quick Start**
 
 ### **1.1. Build Simulation**
-- To build Simulation for Reference Design: `make build_simulation TARGET=R`
-- To build Simulation for Test Design:      `make build_simulation TARGET=T`
+- To build Simulation for Reference Design: `make build TARGET=R`
+- To build Simulation for Test Design:      `make build TARGET=T`
 
 ### **1.2. Run Simulation**
 
