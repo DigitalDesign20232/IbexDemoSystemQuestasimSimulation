@@ -20,10 +20,23 @@ VSIM_MEM_OBJ_PATH := $(VSIM_MEM_OBJ_PATH_REF)
 RESULT_DIR := $(RESULT_DIR_REF)
 OUTPUT_NAME := $(OUTPUT_NAME_REF)
 
+ifeq ($(OS),Windows_NT)
+SHELL := cmd.exe
+ECHO := echo $(1)
+ECHO_LF := echo.
+
+RED = [31m
+GREEN = [32m
+YELLOW = [33m
+RESET = [0m
+else
+ECHO := echo "$(1)"
+
 RED = \033[31m
 GREEN = \033[32m
 YELLOW = \033[33m
 RESET = \033[0m
+endif
 
 # Target
 all_multiple: $(VMEM_LIST_PATH)
@@ -49,6 +62,7 @@ else
 all: update_test clean_sim update_ram simulate
 endif
 
+
 clean_sim:
 	@echo "$(YELLOW)[MAKE] Cleaning previous simulation...$(RESET)"
 	-rm -rf $(RESULT_DIR)
@@ -68,14 +82,14 @@ build_simulation:
 else
 build_simulation: update_test
 endif
-	@echo "$(YELLOW)[MAKE] Cleaning directory $(CURDIR)/$(BUILD_DIR)...$(RESET)"
+	@$(ECHO)$(YELLOW)[MAKE] Cleaning directory $(CURDIR)/$(BUILD_DIR)...$(RESET)
 	-rm -rf $(BUILD_DIR)
-	@echo ""
-	@echo "$(YELLOW)[MAKE] Building simulation...$(RESET)"
+	@$(ECHO_LF)
+	@$(ECHO)$(YELLOW)[MAKE] Building simulation...$(RESET)
 	vsim -c -do " \
 	vlog -work $(BUILD_DIR) -vopt -sv -stats=none -suppress all $(RTL_FILE); \
 	quit"
-	@echo ""
+	@$(ECHO_LF)
 
 simulate:
 	@echo "$(YELLOW)[MAKE] Creating directory: $(CURDIR)/$(RESULT_DIR)$(RESET)"
