@@ -2,7 +2,7 @@
 
 ## 1. Quick Start
 
-- To quick start, run `make all`
+- To quick start, run `make all_ref`
 
 ## 2. Custom Configuration
 
