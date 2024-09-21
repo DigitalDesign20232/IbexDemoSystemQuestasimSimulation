@@ -21,16 +21,13 @@ RESULT_DIR := $(RESULT_DIR_REF)
 OUTPUT_NAME := $(OUTPUT_NAME_REF)
 
 ifeq ($(OS),Windows_NT)
-SHELL := cmd.exe
-ECHO := echo $(1)
-ECHO_LF := echo.
+SHELL := powershell.exe
 
 RED = [31m
 GREEN = [32m
 YELLOW = [33m
 RESET = [0m
 else
-ECHO := echo "$(1)"
 
 RED = \033[31m
 GREEN = \033[32m
@@ -82,14 +79,14 @@ build_simulation:
 else
 build_simulation: update_test
 endif
-	@$(ECHO)$(YELLOW)[MAKE] Cleaning directory $(CURDIR)/$(BUILD_DIR)...$(RESET)
+	@echo "$(YELLOW)[MAKE] Cleaning directory $(CURDIR)/$(BUILD_DIR)...$(RESET)"
 	-rm -rf $(BUILD_DIR)
-	@$(ECHO_LF)
-	@$(ECHO)$(YELLOW)[MAKE] Building simulation...$(RESET)
+	@echo ""
+	@echo "$(YELLOW)[MAKE] Building simulation...$(RESET)"
 	vsim -c -do " \
 	vlog -work $(BUILD_DIR) -vopt -sv -stats=none -suppress all $(RTL_FILE); \
 	quit"
-	@$(ECHO_LF)
+	@echo ""
 
 simulate:
 	@echo "$(YELLOW)[MAKE] Creating directory: $(CURDIR)/$(RESULT_DIR)$(RESET)"
