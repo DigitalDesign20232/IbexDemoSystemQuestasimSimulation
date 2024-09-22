@@ -5,6 +5,7 @@ include Makefile.include
 
 TARGET := T
 
+DEFAULT_LOG_FILE = log
 DEFAULT_VMEM_PATH = ram.vmem
 DEFAULT_VMEM_LIST_DIR = vmem
 VMEM_LIST_PATH = $(sort $(wildcard $(DEFAULT_VMEM_LIST_DIR)/*.vmem))
@@ -25,6 +26,10 @@ SHELL := powershell.exe
 RM := rm -r -Force -ErrorAction SilentlyContinue
 MKDIR := mkdir -Force
 CP := cp -ErrorAction SilentlyContinue
+MV := mv -Force
+
+CURRENT_TIME_COMMAND := cmd /c echo %date%%time%
+
 
 RED = [31m
 GREEN = [32m
@@ -34,6 +39,10 @@ else
 RM := rm -rf
 MKDIR := mkdir -p
 CP := cp
+MV := mv -f
+
+CURRENT_TIME_COMMAND := date
+
 
 RED = \033[31m
 GREEN = \033[32m
@@ -53,7 +62,13 @@ endif
 define process_vmem
 $(1):
 	@echo "$(YELLOW)[MAKE] Running simulation: $(1)...$(RESET)"
-	@$$(MAKE) $(MULTIPLE_RULE) VMEM_PATH=$(1) OUTPUT_NAME_REF=$(basename $(notdir $(1)))> /dev/null TARGET=$(2)
+	@echo "====================================================" >> $(DEFAULT_LOG_FILE)
+	@echo "Timestamp: $(shell $(CURRENT_TIME_COMMAND))" >> $(DEFAULT_LOG_FILE)
+	@echo "Running rule: all_multiple" >> $(DEFAULT_LOG_FILE)
+	@echo "" >> $(DEFAULT_LOG_FILE)
+	@$$(MAKE) $(MULTIPLE_RULE) VMEM_PATH=$(1) OUTPUT_NAME_REF=$(basename $(notdir $(1))) >> $(DEFAULT_LOG_FILE) TARGET=$(2)
+	@echo "" >> $(DEFAULT_LOG_FILE)
+	@echo "" >> $(DEFAULT_LOG_FILE)
 endef
 
 # Generate rules for each .vmem file
@@ -65,10 +80,11 @@ else
 all: update_test clean_sim update_ram simulate
 endif
 
-clean_all:
+clean:
 	@echo "$(YELLOW)[MAKE] Cleaning everything...$(RESET)"
 	-$(RM) "$(BUILD_DIR)"
 	-$(RM) "$(RESULT_DIR)"
+	-$(RM) "$(DEFAULT_LOG_FILE)"
 	@echo ""
 
 clean_sim:
@@ -94,9 +110,7 @@ endif
 	-$(RM) "$(BUILD_DIR)"
 	@echo ""
 	@echo "$(YELLOW)[MAKE] Building simulation...$(RESET)"
-	vsim -c -do " \
-	vlog -work $(BUILD_DIR) -vopt -sv -stats=none -suppress all $(RTL_FILE); \
-	quit"
+	vlog -work $(BUILD_DIR) -vopt -sv -stats=none -suppress all $(RTL_FILE)
 	@echo ""
 
 simulate:
@@ -118,9 +132,9 @@ simulate:
 
 	@echo ""
 	@echo "$(YELLOW)[MAKE] Moving simulation results to $(CURDIR)/$(RESULT_DIR)$(RESET)"
-	mv "$(OUTPUT_NAME).mem" "$(RESULT_DIR)/"
-	mv "$(OUTPUT_NAME).vcd" "$(RESULT_DIR)/"
-	mv "transcript" "$(RESULT_DIR)/"
+	$(MV) "$(OUTPUT_NAME).mem" "$(RESULT_DIR)/"
+	$(MV) "$(OUTPUT_NAME).vcd" "$(RESULT_DIR)/"
+	$(MV) "transcript" "$(RESULT_DIR)/"
 
 	@echo ""
 	@echo ""
@@ -138,8 +152,8 @@ update_ram:
 help:
 	@echo "Opening help page..."
 	@echo ""
-	@echo "$(YELLOW)Usage for Reference Design:$(GREEN) make all TARGET=R [<parameter>=<value>] [<parameter>=<value>] ...$(RESET)"
-	@echo "$(YELLOW)Usage for Test Design:     $(GREEN) make all TARGET=T [<parameter>=<value>] [<parameter>=<value>] ...$(RESET)"
+	@echo "$(YELLOW)Usage for Reference Design:$(GREEN) make clean build all TARGET=R [<parameter>=<value>] [<parameter>=<value>] ...$(RESET)"
+	@echo "$(YELLOW)Usage for Test Design:     $(GREEN) make clean build all TARGET=T [<parameter>=<value>] [<parameter>=<value>] ...$(RESET)"
 	@echo "$(RED)Test Design must be configured in Makefile.include first$(RESET)"
 	@echo ""
 	@echo "$(YELLOW)List of $(GREEN)<parameter>$(YELLOW):$(RESET)"
@@ -147,5 +161,5 @@ help:
 	@echo "\tSIMULATION_TIME (default: $(SIMULATION_TIME))"
 	@echo ""
 	@echo "$(RED)Note that the RAM's content must be put in $(DEFAULT_VMEM_PATH)$(RESET)"
-	@echo "$(RED)$(DEFAULT_VMEM_PATH) will be automatically updated by $(VMEM_PATH) when run 'make all_ref' or 'make all_test'$(RESET)"
+	@echo "$(RED)$(DEFAULT_VMEM_PATH) will be automatically updated by $(VMEM_PATH) when run 'make all' or 'make all_multiple'$(RESET)"
 	@echo "$(YELLOW)Alternatively, you can set the default value for those parameters in Makefile.include$(RESET)"

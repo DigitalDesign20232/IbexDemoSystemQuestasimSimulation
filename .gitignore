@@ -5,3 +5,4 @@ result_test
 *.mem
 *.vcd
 transcript
+log
