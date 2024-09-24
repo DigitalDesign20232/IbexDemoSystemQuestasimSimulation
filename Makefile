@@ -77,7 +77,7 @@ $(1):
 	@echo "Timestamp: $(shell $(CURRENT_TIME_COMMAND))" >> $(DEFAULT_LOG_FILE)
 	@echo "Running rule: all_multiple" >> $(DEFAULT_LOG_FILE)
 	@echo "" >> $(DEFAULT_LOG_FILE)
-	@$$(MAKE) $(MULTIPLE_RULE) VMEM_PATH=$(1) OUTPUT_NAME_REF=$(basename $(notdir $(1))) >> $(DEFAULT_LOG_FILE) TARGET=$(2)
+	@$$(MAKE) $(MULTIPLE_RULE) VMEM_PATH=$(1) OUTPUT_NAME_REF=$(basename $(notdir $(1))) OUTPUT_NAME_TEST=$(basename $(notdir $(1))) >> $(DEFAULT_LOG_FILE) TARGET=$(2)
 	@echo "" >> $(DEFAULT_LOG_FILE)
 	@echo "" >> $(DEFAULT_LOG_FILE)
 endef
