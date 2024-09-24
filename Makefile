@@ -50,14 +50,25 @@ YELLOW = \033[33m
 RESET = \033[0m
 endif
 
-# Target
-all_multiple: $(VMEM_LIST_PATH)
-
 ifeq ($(TARGET),R)
 MULTIPLE_RULE = update_ram simulate
 else
 MULTIPLE_RULE = update_test update_ram simulate
 endif
+
+# Target
+all_multiple: multiple_config multiple_run
+
+multiple_config:
+	@echo "$(YELLOW)[MAKE] Cleaning directory: $(CURDIR)/$(DEFAULT_VMEM_LIST_DIR)/...$(RESET)"
+	$(RM) $(DEFAULT_VMEM_LIST_DIR)/*.vmem
+	@echo ""
+	@echo "$(YELLOW)[MAKE] Copying $(CURDIR)/$(VMEM_MULTIPLE_DIR)/*.vmem into $(CURDIR)/$(DEFAULT_VMEM_LIST_DIR)/...$(RESET)"
+	-$(CP) $(VMEM_MULTIPLE_DIR)/*.vmem $(DEFAULT_VMEM_LIST_DIR)
+	@echo ""
+
+multiple_run: $(VMEM_LIST_PATH)
+
 
 define process_vmem
 $(1):

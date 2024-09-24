@@ -9,7 +9,7 @@
 ### **1.2. Run Simulation**
 
 - To run Reference Design from ram.vmem: `make all TARGET=R`
-- To run Reference Design from vmem/*.vmem: `make all_multiple TARGET=R -B` (Require .vmem file in folder vmem/)
+- To run Reference Design from vmem/*.vmem: `make all_multiple VMEM_MULTIPLE_DIR=<path/to/directory/contain/.vmem/file> -B TARGET=R`
 - To run Test Design, use `TARGET=T`. Run `make help` to configure Test Design
 
 ### **1.3. Clean everything**

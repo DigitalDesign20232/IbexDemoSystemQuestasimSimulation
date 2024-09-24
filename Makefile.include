@@ -22,4 +22,5 @@ OUTPUT_NAME_REF ?= sim_ref
 
 # Custom config for simulation
 VMEM_PATH ?= ram.vmem
+VMEM_MULTIPLE_DIR ?= vmem
 SIMULATION_TIME ?= 10000ns
