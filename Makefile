@@ -91,7 +91,11 @@ else
 all: update_test clean_sim update_ram simulate
 endif
 
+ifeq ($(TARGET),R)
 clean:
+else
+clean: update_test
+endif
 	@echo "$(YELLOW)[MAKE] Cleaning everything...$(RESET)"
 	-$(RM) "$(BUILD_DIR)"
 	-$(RM) "$(RESULT_DIR)"
