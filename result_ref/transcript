@@ -1,0 +1,92 @@
+#  vsim -c work_ref.tb_ibex_demo_system -voptargs=+acc
+# vsim -c work_ref.tb_ibex_demo_system -voptargs="+acc" 
+# Start time: 17:37:23 on Sep 28,2024
+# Loading /tmp/luanle@luanle-ThinkPad-T450s_dpi_418854/linux_x86_64_gcc-11/export_tramp.so
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# //  Questa Sim-64
+# //  Version 10.7c linux_x86_64 Aug 17 2018
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.ibex_pkg(fast)
+# Loading work.tb_ibex_demo_system_sv_unit(fast)
+# Loading work.tb_ibex_demo_system(fast)
+# Loading work.ibex_demo_system(fast)
+# Loading work.bus(fast)
+# Loading work.prim_secded_pkg(fast)
+# Loading work.prim_ram_1p_pkg(fast)
+# Loading work.ibex_top_sv_unit(fast)
+# Loading work.ibex_top(fast)
+# Loading work.prim_pkg(fast)
+# Loading work.prim_clock_gating_sv_unit(fast)
+# Loading work.prim_clock_gating(fast)
+# Loading work.prim_generic_clock_gating(fast)
+# Loading work.prim_buf(fast)
+# Loading work.prim_generic_buf(fast)
+# Loading work.prim_buf(fast__1)
+# Loading work.prim_generic_buf(fast__1)
+# Loading work.ibex_core_sv_unit(fast)
+# Loading work.ibex_core(fast)
+# Loading work.ibex_if_stage_sv_unit(fast)
+# Loading work.ibex_if_stage(fast)
+# Loading work.ibex_prefetch_buffer(fast)
+# Loading work.ibex_fetch_fifo(fast)
+# Loading work.ibex_compressed_decoder_sv_unit(fast)
+# Loading work.ibex_compressed_decoder(fast)
+# Loading work.ibex_id_stage_sv_unit(fast)
+# Loading work.ibex_id_stage(fast)
+# Loading work.ibex_decoder(fast)
+# Loading work.ibex_controller(fast)
+# Loading work.ibex_ex_block_sv_unit(fast)
+# Loading work.ibex_ex_block(fast)
+# Loading work.ibex_alu_sv_unit(fast)
+# Loading work.ibex_alu(fast)
+# Loading work.ibex_multdiv_fast_sv_unit(fast)
+# Loading work.ibex_multdiv_fast(fast)
+# Loading work.ibex_load_store_unit(fast)
+# Loading work.ibex_wb_stage_sv_unit(fast)
+# Loading work.ibex_wb_stage(fast)
+# Loading work.ibex_cs_registers(fast)
+# Loading work.ibex_csr(fast)
+# Loading work.ibex_csr(fast__1)
+# Loading work.ibex_csr(fast__2)
+# Loading work.ibex_csr(fast__3)
+# Loading work.ibex_csr(fast__4)
+# Loading work.ibex_csr(fast__5)
+# Loading work.ibex_csr(fast__6)
+# Loading work.ibex_counter(fast)
+# Loading work.ibex_counter(fast__1)
+# Loading work.ibex_counter(fast__2)
+# Loading work.ibex_counter(fast__3)
+# Loading work.ibex_csr(fast__7)
+# Loading work.ibex_register_file_ff(fast)
+# Loading work.ram_2p(fast)
+# Loading work.prim_ram_2p_pkg(fast)
+# Loading work.prim_ram_2p(fast)
+# Loading work.prim_generic_ram_2p(fast)
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 'test_en_i'. The port definition is at: rtl_ref/ibex_top.sv(54).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_ibex_demo_system/u_ibex_demo_system_i/u_top File: rtl_ref/ibex_demo_system.sv Line: 239
+# ** Warning: (vsim-3015) [PCDPC] - Port size (10) does not match connection size (32) for port 'ram_cfg_i'. The port definition is at: rtl_ref/ibex_top.sv(55).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_ibex_demo_system/u_ibex_demo_system_i/u_top File: rtl_ref/ibex_demo_system.sv Line: 239
+# Compiling /tmp/luanle@luanle-ThinkPad-T450s_dpi_418854/linux_x86_64_gcc-11/exportwrapper.c
+# Loading /tmp/luanle@luanle-ThinkPad-T450s_dpi_418854/linux_x86_64_gcc-11/vsim_auto_compile.so
+#  vcd file xori-01.elf.vcd
+#  vcd add -r /*
+#  run 100000ns
+# Initializing memory tb_ibex_demo_system.u_ibex_demo_system_i.imem_dmem.u_ram.u_impl_generic.#ublk#190621856#57.gen_meminit from file 'ram.vmem'.
+#  vcd flush
+#  vcd off
+#  mem save -o xori-01.elf.mem -f mti -data hex -addr decimal -wordsperline 1 /tb_ibex_demo_system/u_ibex_demo_system_i/imem_dmem/u_ram/u_impl_generic/mem
+#  quit
+# End time: 17:37:27 on Sep 28,2024, Elapsed time: 0:00:04
+# Errors: 0, Warnings: 2

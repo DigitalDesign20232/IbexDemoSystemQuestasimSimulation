@@ -1,0 +1,790 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/home/luanle/DigitalDesign/IbexDemoSystemQuestasimSimulation
+T_opt
+!s110 1727519993
+Vi2TDUi@6zm9G9l;md7IHQ1
+04 19 4 work tb_ibex_demo_system fast 0
+=1-f48c507843d5-66f7dcf9-7f7c5-6659e
+o-quiet -auto_acc_if_foreign -work work_test +acc
+Z1 tCvgOpt 0
+n@_opt
+OL;O;10.7c;67
+vadder
+Z2 DXx6 sv_std 3 std 0 22 d=_JfHTnXCN[H5FjiaJJc0
+Z3 !s110 1727519990
+!i10b 1
+!s100 __c]66POgj_gKeGgzI2TP2
+I1DIB7XJDDU^2U6J7H=Xze3
+Z4 VDg1SIo80bB@j0V0VzS_@n1
+!s105 adder_v_unit
+S1
+R0
+Z5 w1725891811
+8rtl_test/adder.v
+Frtl_test/adder.v
+L0 1
+Z6 OL;L;10.7c;67
+r1
+!s85 0
+31
+Z7 !s108 1727519990.000000
+Z8 !s107 rtl_test/prim_util_memload.svh|rtl_test/prim_assert_sec_cm.svh|rtl_test/prim_assert_standard_macros.svh|rtl_test/tb_ibex_demo_system.sv|rtl_test/ram_2p.sv|rtl_test/prim_ram_2p.sv|rtl_test/prim_generic_ram_2p.sv|rtl_test/prim_flop_macros.sv|rtl_test/prim_assert.sv|rtl_test/ibex_demo_system.sv|rtl_test/bus.sv|rtl_test/store_modifier.v|rtl_test/regfile.v|rtl_test/pc_reg.v|rtl_test/pc_modifier.v|rtl_test/mux_6to1.v|rtl_test/mux_4to1.v|rtl_test/mux_3to1.v|rtl_test/mux_2to1.v|rtl_test/mem_wb_reg.v|rtl_test/load_modifier.v|rtl_test/imm_decode.v|rtl_test/imem_interface.v|rtl_test/if_id_reg.v|rtl_test/id_exe_reg.v|rtl_test/exe_mem_reg.v|rtl_test/dmem_interface.v|rtl_test/core_ver2.v|rtl_test/control_unit.v|rtl_test/compressed_decoder.v|rtl_test/comparator_1bit.v|rtl_test/comparator.v|rtl_test/alu.v|rtl_test/adder.v|rtl_test/prim_ram_2p_pkg.sv|rtl_test/ibex_pkg.sv|
+Z9 !s90 -work|work_test|-vopt|-sv|-stats=none|-suppress|all|rtl_test/ibex_pkg.sv|rtl_test/prim_ram_2p_pkg.sv|rtl_test/adder.v|rtl_test/alu.v|rtl_test/comparator.v|rtl_test/comparator_1bit.v|rtl_test/compressed_decoder.v|rtl_test/control_unit.v|rtl_test/core_ver2.v|rtl_test/dmem_interface.v|rtl_test/exe_mem_reg.v|rtl_test/id_exe_reg.v|rtl_test/if_id_reg.v|rtl_test/imem_interface.v|rtl_test/imm_decode.v|rtl_test/load_modifier.v|rtl_test/mem_wb_reg.v|rtl_test/mux_2to1.v|rtl_test/mux_3to1.v|rtl_test/mux_4to1.v|rtl_test/mux_6to1.v|rtl_test/pc_modifier.v|rtl_test/pc_reg.v|rtl_test/regfile.v|rtl_test/store_modifier.v|rtl_test/bus.sv|rtl_test/ibex_demo_system.sv|rtl_test/ibex_pkg.sv|rtl_test/prim_assert.sv|rtl_test/prim_flop_macros.sv|rtl_test/prim_generic_ram_2p.sv|rtl_test/prim_ram_2p.sv|rtl_test/prim_ram_2p_pkg.sv|rtl_test/ram_2p.sv|rtl_test/tb_ibex_demo_system.sv|
+!i113 0
+Z10 o-suppress all -work work_test -sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R1
+valu
+R2
+R3
+!i10b 1
+!s100 hOho=GDY[B<>PFCK6LW6G0
+IV=H^J`N[ozecYFa07Dfz01
+R4
+!s105 alu_v_unit
+S1
+R0
+R5
+8rtl_test/alu.v
+Frtl_test/alu.v
+L0 1
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 0
+R10
+R1
+vbus
+R2
+R3
+!i10b 1
+!s100 PQOK^WO:@b>YEIM?HnH2b1
+I=51XZ8f4HME_VH8b8UDe>3
+R4
+!s105 bus_sv_unit
+S1
+R0
+w1724663200
+8rtl_test/bus.sv
+Frtl_test/bus.sv
+L0 17
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 0
+R10
+R1
+vcomparator
+R2
+R3
+!i10b 1
+!s100 <i0?oYYkgHDCL4L^=Ab=k0
+I^5]ibe1`]oP^27aRlL6D71
+R4
+!s105 comparator_v_unit
+S1
+R0
+R5
+8rtl_test/comparator.v
+Frtl_test/comparator.v
+L0 1
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 0
+R10
+R1
+vcomparator_1bit
+R2
+R3
+!i10b 1
+!s100 GbBaIM@Z;<K:iADFF4noN0
+IhMVM86TPeG?ol5]Z0h;L33
+R4
+!s105 comparator_1bit_v_unit
+S1
+R0
+R5
+8rtl_test/comparator_1bit.v
+Frtl_test/comparator_1bit.v
+L0 1
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 0
+R10
+R1
+vcompressed_decoder
+R2
+R3
+!i10b 1
+!s100 V8H^d]eYH44[KA6ek@OgU0
+ID^XBTGNRR8bhzHl7Bni`?1
+R4
+!s105 compressed_decoder_v_unit
+S1
+R0
+R5
+8rtl_test/compressed_decoder.v
+Frtl_test/compressed_decoder.v
+L0 1
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 0
+R10
+R1
+vcontrol_unit
+R2
+R3
+!i10b 1
+!s100 Pk06jMg62=hjFK38nV<eB1
+IoEoZfY7DY=HkkdbdNfD1c3
+R4
+!s105 control_unit_v_unit
+S1
+R0
+w1727062856
+8rtl_test/control_unit.v
+Frtl_test/control_unit.v
+L0 1
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 0
+R10
+R1
+vcore_ver2
+R2
+R3
+!i10b 1
+!s100 D7kZOm`M]A8Y:L<C0diL61
+I63k9o8CzToLizTeb_L93l3
+R4
+!s105 core_ver2_v_unit
+S1
+R0
+w1727404724
+8rtl_test/core_ver2.v
+Frtl_test/core_ver2.v
+L0 1
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 0
+R10
+R1
+vdmem_interface
+R2
+R3
+!i10b 1
+!s100 VTM?RCh5Ho?llW43lhidT0
+I5<U`Ne6H360V2JeQzb;1G3
+R4
+!s105 dmem_interface_v_unit
+S1
+R0
+w1727084188
+8rtl_test/dmem_interface.v
+Frtl_test/dmem_interface.v
+L0 1
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 0
+R10
+R1
+vexe_mem_reg
+R2
+R3
+!i10b 1
+!s100 eM;X`6J5bVcoG^hSEPVDi3
+IMRM8QIYcd_QO<KmSh4iK?2
+R4
+!s105 exe_mem_reg_v_unit
+S1
+R0
+Z11 w1725891810
+8rtl_test/exe_mem_reg.v
+Frtl_test/exe_mem_reg.v
+L0 1
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 0
+R10
+R1
+vibex_demo_system
+R2
+Z12 DXx4 work 8 ibex_pkg 0 22 ^8>CnMeYGi?o?QYhQ=9AB0
+R3
+!i10b 1
+!s100 mK<hA5PNc;bgVmR93nbRB3
+IM_^Ia:a_UV5g:^`Ro>`WK2
+R4
+!s105 ibex_demo_system_sv_unit
+S1
+R0
+w1727456767
+8rtl_test/ibex_demo_system.sv
+Frtl_test/ibex_demo_system.sv
+Z13 L0 14
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 0
+R10
+R1
+Xibex_pkg
+R2
+R3
+!i10b 1
+!s100 a=Rnah8GVzSW5JV2nkm2B2
+I^8>CnMeYGi?o?QYhQ=9AB0
+V^8>CnMeYGi?o?QYhQ=9AB0
+S1
+R0
+Z14 w1725068138
+8rtl_test/ibex_pkg.sv
+Frtl_test/ibex_pkg.sv
+L0 9
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 0
+R10
+R1
+vid_exe_reg
+R2
+R3
+!i10b 1
+!s100 ;Mi2]fm[YWfG>R=MlCVc^3
+I?C^iS17oWeXCZKT3LVA>W3
+R4
+!s105 id_exe_reg_v_unit
+S1
+R0
+R11
+8rtl_test/id_exe_reg.v
+Frtl_test/id_exe_reg.v
+L0 2
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 0
+R10
+R1
+vif_id_reg
+R2
+R3
+!i10b 1
+!s100 e8g:MdzEU70==f>8Qm8HP0
+IbHjk6?XIla^K=U;G[OCC53
+R4
+!s105 if_id_reg_v_unit
+S1
+R0
+R5
+8rtl_test/if_id_reg.v
+Frtl_test/if_id_reg.v
+L0 1
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 0
+R10
+R1
+vimem_interface
+R2
+R3
+!i10b 1
+!s100 NF`;lenab2QM8CGWaaj7>3
+IFDKg^SO>NQTL;aeEEIdVI1
+R4
+!s105 imem_interface_v_unit
+S1
+R0
+Z15 w1725891813
+8rtl_test/imem_interface.v
+Frtl_test/imem_interface.v
+L0 1
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 0
+R10
+R1
+vimm_decode
+R2
+R3
+!i10b 1
+!s100 DEnkdnEeIg=0_GS9BGHf20
+IDDWC7606ococ07_nk`hlN1
+R4
+!s105 imm_decode_v_unit
+S1
+R0
+w1727425873
+8rtl_test/imm_decode.v
+Frtl_test/imm_decode.v
+L0 1
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 0
+R10
+R1
+vload_modifier
+R2
+R3
+!i10b 1
+!s100 6nG2HE2TIP8I[WjI0^D<71
+IP;nU4R=^h=ZNOdm26LDWC2
+R4
+!s105 load_modifier_v_unit
+S1
+R0
+R15
+8rtl_test/load_modifier.v
+Frtl_test/load_modifier.v
+L0 1
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 0
+R10
+R1
+vmem_wb_reg
+R2
+R3
+!i10b 1
+!s100 OOoOVzA8D2WTHZ<GDfYem1
+I2mi]AYCeN58mBiO_EHi4G3
+R4
+!s105 mem_wb_reg_v_unit
+S1
+R0
+w1727434837
+8rtl_test/mem_wb_reg.v
+Frtl_test/mem_wb_reg.v
+L0 1
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 0
+R10
+R1
+vmux_2to1
+R2
+R3
+!i10b 1
+!s100 i>Kd26m<0Whah3d?4Ff1Y3
+IzR9S_zI?@`Q6Xbd_NZM990
+R4
+!s105 mux_2to1_v_unit
+S1
+R0
+w1727025177
+8rtl_test/mux_2to1.v
+Frtl_test/mux_2to1.v
+L0 1
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 0
+R10
+R1
+vmux_3to1
+R2
+R3
+!i10b 1
+!s100 FD@eCR;D?HLVG:CUYWBNn1
+IUb`R8MXY;FD^D=C:W=23?1
+R4
+!s105 mux_3to1_v_unit
+S1
+R0
+w1727025201
+8rtl_test/mux_3to1.v
+Frtl_test/mux_3to1.v
+L0 1
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 0
+R10
+R1
+vmux_4to1
+R2
+R3
+!i10b 1
+!s100 Uc?H28ZhiY2[enmk;dNeo0
+I0@TZRFE=DgE<G40Ge`U[b2
+R4
+!s105 mux_4to1_v_unit
+S1
+R0
+w1725886525
+8rtl_test/mux_4to1.v
+Frtl_test/mux_4to1.v
+L0 1
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 0
+R10
+R1
+vmux_6to1
+R2
+R3
+!i10b 1
+!s100 e??5:U;945`nf^>W]`J?Q3
+I;3a5^<?_@2gUgzW8L>lU[0
+R4
+!s105 mux_6to1_v_unit
+S1
+R0
+w1725886536
+8rtl_test/mux_6to1.v
+Frtl_test/mux_6to1.v
+L0 1
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 0
+R10
+R1
+vpc_modifier
+R2
+R3
+!i10b 1
+!s100 P;k;:9Fa<JNPk5<Kf_1GN3
+I0OiCSh0FV]UPzUaUWU[@Q3
+R4
+!s105 pc_modifier_v_unit
+S1
+R0
+w1725891814
+8rtl_test/pc_modifier.v
+Frtl_test/pc_modifier.v
+L0 1
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 0
+R10
+R1
+vpc_reg
+R2
+R3
+!i10b 1
+!s100 lab?4MP1VZVd;VRA>eCnE0
+IVnDm>N5jUiDJ3bmMLf?8`2
+R4
+!s105 pc_reg_v_unit
+S1
+R0
+w1727057964
+8rtl_test/pc_reg.v
+Frtl_test/pc_reg.v
+L0 1
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 0
+R10
+R1
+vprim_generic_ram_2p
+R2
+Z16 DXx4 work 15 prim_ram_2p_pkg 0 22 :<hjK@@d]ce8FRiHT>RHW2
+R3
+!i10b 1
+!s100 j52C6R3Olfb4oYd_[2i2;3
+Ia`JPe@f]QiCN<AA3YS1Xk3
+R4
+!s105 prim_generic_ram_2p_sv_unit
+S1
+R0
+w1725730248
+8rtl_test/prim_generic_ram_2p.sv
+Frtl_test/prim_generic_ram_2p.sv
+Frtl_test/prim_util_memload.svh
+L0 9
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 0
+R10
+R1
+vprim_ram_2p
+R2
+R16
+R3
+!i10b 1
+!s100 bAjSU`30BT2fBAZ?g88LK2
+InjIiX<WbNb4B^<7K6=zP;2
+R4
+!s105 prim_ram_2p_sv_unit
+S1
+R0
+w1725730389
+8rtl_test/prim_ram_2p.sv
+Frtl_test/prim_ram_2p.sv
+R13
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 0
+R10
+R1
+Xprim_ram_2p_pkg
+R2
+R3
+!i10b 1
+!s100 ^=O>EjaKW23>eJLKnaIzl1
+I:<hjK@@d]ce8FRiHT>RHW2
+V:<hjK@@d]ce8FRiHT>RHW2
+S1
+R0
+R14
+8rtl_test/prim_ram_2p_pkg.sv
+Frtl_test/prim_ram_2p_pkg.sv
+L0 6
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 0
+R10
+R1
+vram_2p
+R2
+R3
+!i10b 1
+!s100 g76FamW=C<gEAgH62>S=51
+Ie225?5:1DcEezg5g<[YVf2
+R4
+!s105 ram_2p_sv_unit
+S1
+R0
+w1725773944
+8rtl_test/ram_2p.sv
+Frtl_test/ram_2p.sv
+L0 11
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 0
+R10
+R1
+vregfile
+R2
+R3
+!i10b 1
+!s100 T[W_?7c8Gdf_Q4KfW5k_N3
+I5GL<_KQ0BRW1Sbl:<H=EJ0
+R4
+!s105 regfile_v_unit
+S1
+R0
+w1727071827
+8rtl_test/regfile.v
+Frtl_test/regfile.v
+L0 1
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 0
+R10
+R1
+vstore_modifier
+R2
+R3
+!i10b 1
+!s100 U6D_nhEhQRRjQkoYVKMZQ0
+I<;GWn?n39V`=J5SSIoOD22
+R4
+!s105 store_modifier_v_unit
+S1
+R0
+w1727421401
+8rtl_test/store_modifier.v
+Frtl_test/store_modifier.v
+L0 1
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 0
+R10
+R1
+vtb_ibex_demo_system
+R2
+R12
+DXx4 work 27 tb_ibex_demo_system_sv_unit 0 22 0f4lnm75fJ;kagL[_`bhC0
+R4
+r1
+!s85 0
+!i10b 1
+!s100 JBaFZYJM85DXe9oYRhNVR2
+I^ofXRXkOl6a71=79a[mb<0
+!s105 tb_ibex_demo_system_sv_unit
+S1
+R0
+Z17 w1727010367
+Z18 8rtl_test/tb_ibex_demo_system.sv
+Z19 Frtl_test/tb_ibex_demo_system.sv
+L0 4
+R6
+31
+R7
+R8
+R9
+!i113 0
+R10
+R1
+Xtb_ibex_demo_system_sv_unit
+R2
+R12
+V0f4lnm75fJ;kagL[_`bhC0
+r1
+!s85 0
+!i10b 1
+!s100 NCK]Z`5F[k40@mR]]f6BD2
+I0f4lnm75fJ;kagL[_`bhC0
+!i103 1
+S1
+R0
+R17
+R18
+R19
+L0 3
+R6
+31
+R7
+R8
+R9
+!i113 0
+R10
+R1
