@@ -2,12 +2,12 @@
 
 # Custom config for test design
 RTL_DIR_TEST ?= rtl_test
-RTL_FILE_TEST ?=
-TOP_MODULE_TEST ?=
-VSIM_MEM_OBJ_PATH_TEST ?=
+RTL_FILE_TEST ?= $(RTL_DIR_TEST)/*pkg.sv $(RTL_DIR_TEST)/*.v $(RTL_DIR_TEST)/*.sv
+TOP_MODULE_TEST ?= tb_ibex_demo_system
+VSIM_MEM_OBJ_PATH_TEST ?= /tb_ibex_demo_system/u_ibex_demo_system_i/imem_dmem/u_ram/u_impl_generic/mem
 
 RESULT_DIR_TEST ?= result_test
-OUTPUT_NAME_TEST ?=
+OUTPUT_NAME_TEST ?= sim_test
 
 
 # Custom config for reference design
@@ -22,5 +22,6 @@ OUTPUT_NAME_REF ?= sim_ref
 
 # Custom config for simulation
 VMEM_PATH ?= ram.vmem
-VMEM_MULTIPLE_DIR ?= vmem
-SIMULATION_TIME ?= 10000ns
+#VMEM_MULTIPLE_DIR ?= /home/luanle/DigitalDesign/FinalExam/RISCV32_ComplianceTestSuite/build
+VMEM_MULTIPLE_DIR ?= /home/luanle/ibex/riscv-compliance/work/rv32i_m/I
+SIMULATION_TIME ?= 100000ns

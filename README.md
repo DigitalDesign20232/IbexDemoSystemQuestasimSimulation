@@ -19,3 +19,10 @@
 ## **2. More Configuration**
 
 - Run `make help` and follow the instruction to start using this tool
+
+## **3. Signature**
+
+- Run `signature_gen.sh` but need modify directory in file 
+- Run `compare_signature.sh` to see status
+- You can see different in folder signature_output (*.diff)
+
