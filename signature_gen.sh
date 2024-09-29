@@ -8,28 +8,32 @@ output_dir="/home/luanle/DigitalDesign/IbexDemoSystemQuestasimSimulation/signatu
 # Tạo thư mục đầu ra nếu chưa tồn tại
 mkdir -p "$output_dir"
 
-# Lặp qua tất cả các file .objdump trong thư mục
-for objdump_file in "$objdump_dir"/*.elf.objdump; do
+# Lặp qua tất cả các file .elf.readelf trong thư mục
+for objdump_file in "$objdump_dir"/*.elf.readelf; do
   if [ ! -f "$objdump_file" ]; then
-    echo "Không tìm thấy file .objdump nào trong thư mục."
+    echo "Không tìm thấy file .elf.readelf nào trong thư mục."
     continue
   fi
 
   # Lấy tên file mà không có phần mở rộng
-  base_name=$(basename "$objdump_file" .elf.objdump)
+  base_name=$(basename "$objdump_file" .elf.readelf)
 
-  # Tìm <begin_signature> và <end_signature>
-  begin_address=$(grep -m 1 "<begin_signature>:" "$objdump_file" | awk '{print $1}' | tr -d '<>')
-  end_address=$(grep -m 1 "<end_signature>:" "$objdump_file" | awk '{print $1}' | tr -d '<>')
+  # Tìm giá trị từ cột thứ 2 cho begin_signature và end_signature
+  begin_value=$(grep "begin_signature" "$objdump_file" | awk '{print $2}')
+  end_value=$(grep "end_signature" "$objdump_file" | awk '{print $2}')
 
-  if [ -z "$begin_address" ] || [ -z "$end_address" ]; then
+  if [ -z "$begin_value" ] || [ -z "$end_value" ]; then
     echo "Không tìm thấy signature trong file $objdump_file." 
     continue
   fi
 
-  # Chia giá trị signature cho 4
-  begin_address=$((0x$begin_address/4))
-  end_address=$((0x$end_address/4-1))
+  # In ra giá trị begin signature và end signature
+  echo "Giá trị begin_signature: $begin_value"
+  echo "Giá trị end_signature: $end_value"
+
+  # Chuyển đổi giá trị từ hex sang số nguyên
+  begin_address=$((0x$begin_value/4))
+  end_address=$((0x$end_value/4-1))
 
   # Đọc file .mem tương ứng
   mem_file="$mem_dir/$base_name.elf.mem"
@@ -38,7 +42,7 @@ for objdump_file in "$objdump_dir"/*.elf.objdump; do
     continue
   fi
 
-  # Tạo file ghi kết quả cho từng file .objdump
+  # Tạo file ghi kết quả cho từng file .elf.readelf
   output_file="$output_dir/$base_name.signature"
 
   # Lọc dữ liệu giữa <begin_signature> và <end_signature>
@@ -57,7 +61,7 @@ for objdump_file in "$objdump_dir"/*.elf.objdump; do
   }' "$mem_file" > "$output_file"
 
   # Hiển thị thông báo thành công trên terminal
-  echo "Kết quả đã được ghi vào: $output_file"
+  echo "Dữ liệu từ file $mem_file giữa $begin_address và $end_address: Kết quả đã được ghi vào: $output_file"
 done
 
 echo "Tất cả kết quả đã được ghi vào thư mục: $output_dir"
