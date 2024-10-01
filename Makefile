@@ -57,39 +57,35 @@ MULTIPLE_RULE = update_test update_ram simulate
 endif
 
 # Target
-all_multiple: multiple_config multiple_run
-
-multiple_config:
-	@echo "$(YELLOW)[MAKE] Cleaning directory: $(CURDIR)/$(DEFAULT_VMEM_LIST_DIR)/...$(RESET)"
-	$(RM) $(DEFAULT_VMEM_LIST_DIR)/*.vmem
-	@echo ""
-	@echo "$(YELLOW)[MAKE] Copying $(CURDIR)/$(VMEM_MULTIPLE_DIR)/*.vmem into $(CURDIR)/$(DEFAULT_VMEM_LIST_DIR)/...$(RESET)"
-	-$(CP) $(VMEM_MULTIPLE_DIR)/*.vmem $(DEFAULT_VMEM_LIST_DIR)
-	@echo ""
-
-multiple_run: $(VMEM_LIST_PATH)
-
-
-define process_vmem
-$(1):
-	@echo "$(YELLOW)[MAKE] Running simulation: $(1)...$(RESET)"
-	@echo "====================================================" >> $(DEFAULT_LOG_FILE)
-	@echo "Timestamp: $(shell $(CURRENT_TIME_COMMAND))" >> $(DEFAULT_LOG_FILE)
-	@echo "Running rule: all_multiple" >> $(DEFAULT_LOG_FILE)
-	@echo "" >> $(DEFAULT_LOG_FILE)
-	@$$(MAKE) $(MULTIPLE_RULE) VMEM_PATH=$(1) OUTPUT_NAME_REF=$(basename $(notdir $(1))) OUTPUT_NAME_TEST=$(basename $(notdir $(1))) >> $(DEFAULT_LOG_FILE) TARGET=$(2)
-	@echo "" >> $(DEFAULT_LOG_FILE)
-	@echo "" >> $(DEFAULT_LOG_FILE)
-endef
-
-# Generate rules for each .vmem file
-$(foreach vmem_file,$(VMEM_LIST_PATH),$(eval $(call process_vmem,$(vmem_file),$(TARGET))))
-
 ifeq ($(TARGET),R)
 all: clean_sim update_ram simulate
 else
 all: update_test clean_sim update_ram simulate
 endif
+
+ifeq ($(TARGET),R)
+all_multiple: clean_sim update_vmem
+else
+all_multiple: update_test clean_sim update_vmem
+endif
+	@echo "$(YELLOW)[MAKE] Creating directory: $(CURDIR)/$(RESULT_DIR)$(RESET)"
+	$(MKDIR) "$(RESULT_DIR)"
+	@echo ""
+	@echo "$(YELLOW)[MAKE] Simulating...$(RESET)"
+
+	@echo "vsim -c -do \"" > sim.sh
+	@./sim-command-generate.sh $(BUILD_DIR) $(TOP_MODULE) $(SIMULATION_TIME) $(VSIM_MEM_OBJ_PATH) $(RESULT_DIR) >> sim.sh
+	@echo "quit\"" >> sim.sh
+	@chmod +x sim.sh
+	@./sim.sh | grep echo
+	@rm -f sim.sh
+
+	@echo ""
+	@echo "$(GREEN)[MAKE] Simulation completed!$(RESET)"
+	@echo "$(GREEN)[MAKE] Simulation result saved to folder $(RESULT_DIR)/$(RESET)"
+	@echo "$(YELLOW)[MAKE] See result files with command: 'ls -v $(RESULT_DIR)/'$(RESET)"
+	@echo "$(YELLOW)[MAKE] See simulation wave with command: 'gtkwave $(RESULT_DIR)/<filename>.vcd'$(RESET)"
+	@echo ""
 
 ifeq ($(TARGET),R)
 clean:
@@ -105,6 +101,11 @@ endif
 clean_sim:
 	@echo "$(YELLOW)[MAKE] Cleaning previous simulation...$(RESET)"
 	-$(RM) "$(RESULT_DIR)"
+	@echo ""
+
+clean_vmem:
+	@echo "$(YELLOW)[MAKE] Cleaning folder $(DEFAULT_VMEM_LIST_DIR)...$(RESET)"
+	-$(RM) "$(DEFAULT_VMEM_LIST_DIR)"
 	@echo ""
 
 update_test:
@@ -162,6 +163,11 @@ simulate:
 update_ram:
 	@echo "$(YELLOW)[MAKE] Updating RAM's content...$(RESET)"
 	-$(CP) "$(VMEM_PATH)" "$(DEFAULT_VMEM_PATH)"
+	@echo ""
+
+update_vmem:
+	@echo "$(YELLOW)[MAKE] Updating folder $(DEFAULT_VMEM_LIST_DIR)/...$(RESET)"
+	-$(CP) -rf $(VMEM_MULTIPLE_DIR)/*.vmem "$(DEFAULT_VMEM_LIST_DIR)" 2>/dev/null
 	@echo ""
 
 help:
