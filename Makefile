@@ -170,6 +170,9 @@ update_vmem:
 	-$(CP) -rf $(VMEM_MULTIPLE_DIR)/*.vmem "$(DEFAULT_VMEM_LIST_DIR)" 2>/dev/null
 	@echo ""
 
+verify:
+	@./verify.sh
+
 help:
 	@echo "Opening help page..."
 	@echo ""
