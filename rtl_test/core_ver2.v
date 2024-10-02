@@ -345,7 +345,7 @@ module core_ver2(
 
         .data_gnt_i(data_gnt_i),
         .data_rvalid_i(data_rvalid_i),
-        .data_rdata_i(data_rdata_i),
+        .data_rdata_i(data_rdata_i),           // input from ram 
         .data_rdata_intg_i(data_rdata_intg_i),
         .data_err_i(data_err_i),
 
@@ -366,6 +366,7 @@ module core_ver2(
     load_modifier load_unit (
         .lb(mem_lsb), .lh(mem_lsh), .load_signext(mem_loadsignext),
         .data_in(data_rdata_modified),
+        .addr_in(data_addr_o),
         .data_out(mod_rd_dmem)
     );
     /************************************************************/

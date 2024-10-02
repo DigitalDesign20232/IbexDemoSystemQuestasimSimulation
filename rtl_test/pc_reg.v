@@ -8,7 +8,7 @@ module pc_reg(
     begin
         if(!i_resetn)
             o_pc <= 32'h80;
-        else
+        else if(i_we)
             o_pc <= i_pc;
     end
 

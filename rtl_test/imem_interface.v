@@ -20,7 +20,7 @@ assign unused_err_i = instr_err_i;
 
 assign instr_req_o = 1'b1;
 assign instr_addr_o = pc_addr_i;
-assign instr_rdata_o = (instr_gnt_i & instr_rvalid_i) ? instr_rdata_i : 32'b0;
+assign instr_rdata_o = (instr_gnt_i & instr_rvalid_i) ? instr_rdata_i : 32'h00000013;
 
 endmodule
 
