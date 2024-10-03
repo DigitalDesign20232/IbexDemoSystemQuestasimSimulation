@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Check if the correct number of arguments is provided
-if [ "$#" -ne 5 ]; then
+if [ "$#" -ne 6 ]; then
     exit 1
 fi
 
@@ -13,7 +13,7 @@ VSIM_MEM_OBJ_PATH="$4"
 RESULT_DIR="$5"
 
 # Directory to search
-DIRECTORY="vmem"
+DIRECTORY="$6"
 
 # Check if the directory exists
 if [ ! -d "$DIRECTORY" ]; then

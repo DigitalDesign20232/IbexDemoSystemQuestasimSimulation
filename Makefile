@@ -4,11 +4,14 @@
 include Makefile.include
 
 TARGET := T
+STANDARD := None # Value: {None, S}
 
 DEFAULT_LOG_FILE = log
 DEFAULT_VMEM_PATH = ram.vmem
 DEFAULT_VMEM_LIST_DIR = vmem
+DEFAULT_VMEM_STANDARD_DIR = standard_ref/reference_vmem
 VMEM_LIST_PATH = $(sort $(wildcard $(DEFAULT_VMEM_LIST_DIR)/*.vmem))
+VMEM_DIR ?=
 
 BUILD_DIR_TEST := work_test
 BUILD_DIR_REF := work_ref
@@ -56,6 +59,12 @@ else
 MULTIPLE_RULE = update_test update_ram simulate
 endif
 
+ifeq ($(STANDARD),S)
+VMEM_DIR = $(DEFAULT_VMEM_STANDARD_DIR)
+else
+VMEM_DIR = $(DEFAULT_VMEM_LIST_DIR)
+endif
+
 # Target
 ifeq ($(TARGET),R)
 all: clean_sim update_ram simulate
@@ -74,7 +83,7 @@ endif
 	@echo "$(YELLOW)[MAKE] Simulating...$(RESET)"
 
 	@echo "vsim -c -do \"" > sim.sh
-	@./sim-command-generate.sh $(BUILD_DIR) $(TOP_MODULE) $(SIMULATION_TIME) $(VSIM_MEM_OBJ_PATH) $(RESULT_DIR) >> sim.sh
+	@./sim-command-generate.sh $(BUILD_DIR) $(TOP_MODULE) $(SIMULATION_TIME) $(VSIM_MEM_OBJ_PATH) $(RESULT_DIR) $(VMEM_DIR) >> sim.sh
 	@echo "quit\"" >> sim.sh
 	@chmod +x sim.sh
 	@./sim.sh | grep echo
@@ -171,14 +180,20 @@ update_vmem:
 	@echo ""
 
 verify:
-	@./verify.sh
+ifeq ($(STANDARD),S)
+	@./verify.sh "result_test" "signature" "standard_ref/reference_output" "reference_output"
+else
+	@./verify.sh "result_test" "mem" "result_ref" "mem"
+endif
 
 help:
 	@echo "Opening help page..."
 	@echo ""
-	@echo "$(YELLOW)Usage for Reference Design:$(GREEN) make clean build all TARGET=R [<parameter>=<value>] [<parameter>=<value>] ...$(RESET)"
-	@echo "$(YELLOW)Usage for Test Design:     $(GREEN) make clean build all TARGET=T [<parameter>=<value>] [<parameter>=<value>] ...$(RESET)"
+	@echo "$(YELLOW)Usage for Reference Design:         $(GREEN) make clean build all_multiple TARGET=R [<parameter>=<value>] [<parameter>=<value>] ...$(RESET)"
+	@echo "$(YELLOW)Usage for Test Design:              $(GREEN) make clean build all_multiple TARGET=T [<parameter>=<value>] [<parameter>=<value>] ...$(RESET)"
 	@echo "$(RED)Test Design must be configured in Makefile.include first$(RESET)"
+	@echo "$(YELLOW)To verify Test with Reference:      $(GREEN) make verify -B"
+	@echo "$(YELLOW)To verify Test with Standard:       $(GREEN) make verify STANDARD=S -B"
 	@echo ""
 	@echo "$(YELLOW)List of $(GREEN)<parameter>$(YELLOW):$(RESET)"
 	@echo "\tVMEM_PATH (default: $(VMEM_PATH)) (this parameter will permanently overwrite $(DEFAULT_VMEM_PATH))"
