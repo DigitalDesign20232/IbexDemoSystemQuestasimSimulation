@@ -88,7 +88,8 @@ endif
 	@chmod +x sim.sh
 	@./sim.sh | grep echo
 	@rm -f sim.sh
-
+	@./get_signature_addr.sh
+	
 	@echo ""
 	@echo "$(GREEN)[MAKE] Simulation completed!$(RESET)"
 	@echo "$(GREEN)[MAKE] Simulation result saved to folder $(RESULT_DIR)/$(RESET)"
