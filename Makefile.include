@@ -1,0 +1,26 @@
+#------ User-customizable settings ------#
+
+# Custom config for test design
+RTL_DIR_TEST ?= rtl_test
+RTL_FILE_TEST ?= $(RTL_DIR_TEST)/*pkg.sv $(RTL_DIR_TEST)/*.sv $(RTL_DIR_TEST)/*.v
+TOP_MODULE_TEST ?= tb_ibex_demo_system
+VSIM_MEM_OBJ_PATH_TEST ?= /tb_ibex_demo_system/u_ibex_demo_system_i/imem_dmem/u_ram/u_impl_generic/mem
+
+RESULT_DIR_TEST ?= result_test
+OUTPUT_NAME_TEST ?= sim_test
+
+
+# Custom config for reference design
+RTL_DIR_REF ?= rtl_ref
+RTL_FILE_REF ?= $(RTL_DIR_REF)/*pkg.sv $(RTL_DIR_REF)/*.sv
+TOP_MODULE_REF ?= tb_ibex_demo_system
+VSIM_MEM_OBJ_PATH_REF ?= /tb_ibex_demo_system/u_ibex_demo_system_i/imem_dmem/u_ram/u_impl_generic/mem
+
+RESULT_DIR_REF ?= result_ref
+OUTPUT_NAME_REF ?= sim_ref
+
+
+# Custom config for simulation
+VMEM_PATH ?= ram.vmem
+VMEM_MULTIPLE_DIR ?= vmem
+SIMULATION_TIME ?= 10000ns
