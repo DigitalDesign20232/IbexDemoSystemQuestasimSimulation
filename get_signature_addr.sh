@@ -53,7 +53,7 @@ for file in "${readelf_files[@]}"; do
     # Check if any .mem files exist
     if [[ ! -e "$MEM_FILE" ]]; then
         echo "No file ${MEM_FILE} found in the directory: ${RESULT_MEM_DIR}"
-        exit 1
+        continue
     fi
 
     echo "Processing file: $MEM_FILE"

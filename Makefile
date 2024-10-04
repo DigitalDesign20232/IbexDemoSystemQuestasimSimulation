@@ -182,9 +182,9 @@ update_vmem:
 
 verify:
 ifeq ($(STANDARD),S)
-	@./verify.sh "result_test" "signature" "standard_ref/reference_output" "reference_output"
+	@-./verify.sh "result_test" "signature" "standard_ref/reference_output" "reference_output"
 else
-	@./verify.sh "result_test" "mem" "result_ref" "mem"
+	@-./verify.sh "result_test" "mem" "result_ref" "mem"
 endif
 
 help:

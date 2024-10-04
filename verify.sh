@@ -21,7 +21,7 @@ RED='\033[0;31m'
 NC='\033[0m' # No Color
 
 # Print table header
-printf "%-20s %-10s\n" "File Name" "Status"
+printf "%-30s %-10s\n" "File Name" "Status"
 echo "----------------------------------------"
 
 for test_file in $test_dir/*.$test_extension; do
