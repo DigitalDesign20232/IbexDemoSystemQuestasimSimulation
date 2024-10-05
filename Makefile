@@ -136,7 +136,7 @@ endif
 	-$(RM) "$(BUILD_DIR)"
 	@echo ""
 	@echo "$(YELLOW)[MAKE] Building simulation...$(RESET)"
-	vlog -work $(BUILD_DIR) -vopt -sv -stats=none -suppress all $(RTL_FILE)
+	vlog -work $(BUILD_DIR) -vopt -sv -stats=none -suppress all $(RTL_FILE) -define RVFI
 	@echo ""
 
 simulate:
